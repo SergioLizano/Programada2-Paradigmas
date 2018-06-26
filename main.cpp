@@ -147,33 +147,31 @@ float fitness (char arbol[]){
     return total;
 }
 
-float floatGenerator (){
-    // Return a number between -1.0 and 1.0
-    return (2.0 * random() - 1.0);
-}
 
 void crossover(vector<char> arbol1, vector<char> arbol2){
     vector<char> frag1;
     vector<char> frag2;
+    int indice1 = 0;
+    int indice2 = 0;
     regex r("\\d");
     //obtiene los fragmentos de los arboles usando un numero random menos el indice 0(raiz)
     int rand1 = (rand() % (arbol1.size() - 1)) + 1;
     int rand2 = (rand() % (arbol2.size() - 1)) + 1;
     if (arbol1[rand1] == '+' || arbol1[rand1] == '-' || arbol1[rand1] == '*' || arbol1[rand1] == '/'){
         bool terminado = false;
-        int indice = rand1 + 1;
+        indice1 = rand1 + 1;
         //si el indice es un operador el fragmento obtiene el sub-arbol hasta el final
         while (!terminado){
-            string s(1, arbol1[indice]);
-            string a(1, arbol1[indice+1]);
+            string s(1, arbol1[indice1]);
+            string a(1, arbol1[indice1+1]);
             if (regex_search(s, r) && regex_search(a, r)){
                 terminado = true;
             }
 
-            indice++;
+            indice1++;
         }
         std::vector<char>::const_iterator first = arbol1.begin() + rand1;
-        std::vector<char>::const_iterator last = arbol1.begin() + indice + 1;
+        std::vector<char>::const_iterator last = arbol1.begin() + indice1 + 1;
         vector<char> newVec(first, last);
         frag1.swap(newVec);
     }
@@ -182,18 +180,18 @@ void crossover(vector<char> arbol1, vector<char> arbol2){
     }
     if (arbol2[rand2] == '+' || arbol2[rand2] == '-' || arbol2[rand2] ==  '*' || arbol2[rand2] == '/'){
         bool terminado = false;
-        int indice = rand2 + 1;
+        indice2 = rand2 + 1;
         //si el indice es un operador el fragmento obtiene el sub-arbol hasta el final
         while (!terminado){
-            string s(1, arbol2[indice]);
-            string a(1, arbol2[indice+1]);
+            string s(1, arbol2[indice2]);
+            string a(1, arbol2[indice2+1]);
             if (regex_search(s, r) && regex_search(a, r)){
                 terminado = true;
             }
-            indice++;
+            indice2++;
         }
         std::vector<char>::const_iterator first = arbol2.begin() + rand2;
-        std::vector<char>::const_iterator last = arbol2.begin() + indice + 1;
+        std::vector<char>::const_iterator last = arbol2.begin() + indice2 + 1;
         vector<char> newVec(first, last);
         frag2.swap(newVec);
     }
@@ -208,6 +206,46 @@ void crossover(vector<char> arbol1, vector<char> arbol2){
         cout<<frag2[i];
     }
     cout<<endl;
+
+    for(int i = 0; i < arbol1.size(); i++){
+        cout << arbol1[i];
+    }
+    cout<<endl;
+
+    for(int i = 0; i < arbol2.size(); i++){
+        cout << arbol2[i];
+    }
+    cout<<endl;
+
+    //empezar el cambio de subarboles
+    //eliminar la porcion que se quiere cambiar
+    if(frag1.size() > 1){
+        arbol1.erase(arbol1.begin()+rand1, arbol1.begin()+indice1+1);
+    }
+    else{
+        arbol1.erase(arbol1.begin()+rand1);
+    }
+    if(frag2.size() > 1){
+        arbol2.erase(arbol2.begin()+rand2, arbol2.begin()+indice2+1);
+    }
+    else{
+        arbol2.erase(arbol2.begin()+rand2);
+    }
+
+    //insertar los subarboles en la misma posicion donde se eliminaron
+    arbol1.insert(arbol1.begin()+rand1, frag2.begin(), frag2.end());
+    arbol2.insert(arbol2.begin()+rand2, frag1.begin(), frag1.end());
+
+    for(int i = 0; i < arbol1.size(); i++){
+        cout << arbol1[i];
+    }
+    cout<<endl;
+
+    for(int i = 0; i < arbol2.size(); i++){
+        cout << arbol2[i];
+    }
+    cout<<endl;
+
 
 
 
@@ -226,8 +264,8 @@ vector<char> expandir (vector<char> arbol, char x, int j)
         arbol[k + 2] = arbol[k];
     }
     arbol[j] = 'X';
-    arbol[j + 1] = rand() % 9 + 1;
-    arbol.insert(arbol.begin() + j + 2, rand() % 9 + 1);
+    arbol.insert(arbol.begin() + j + 1, x+1);
+    arbol.insert(arbol.begin() + j + 2, x+1);
     return arbol;
 }
 
@@ -373,7 +411,9 @@ int main()
     t.push_back('+');
     t.push_back('*');
     t.push_back('9');
-    t.push_back('3');
+    t.push_back('/');
+    t.push_back('5');
+    t.push_back('8');
     t.push_back('-');
     t.push_back('9');
     t.push_back('-');
@@ -386,7 +426,9 @@ int main()
     y.push_back('-');
     y.push_back('9');
     y.push_back('-');
-    y.push_back('2');
+    y.push_back('4');
+    y.push_back('*');
+    y.push_back('1');
     y.push_back('7');
     crossover(t, y);
 
