@@ -1,0 +1,3 @@
+/Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2/cmake-build-debug/CMakeFiles/Programada_2.dir

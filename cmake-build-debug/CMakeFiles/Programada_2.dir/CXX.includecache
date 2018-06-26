@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2/cola.cpp
+cola.h
+/Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2/cola.h
+
+/Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2/cola.h
+nodo.h
+/Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2/nodo.h
+
+/Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2/main.cpp
+iostream
+-
+stack
+-
+vector
+-
+regex
+-
+string
+-
+
+/Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2/nodo.cpp
+nodo.h
+/Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2/nodo.h
+
+/Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2/nodo.h
+

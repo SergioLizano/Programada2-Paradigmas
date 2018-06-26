@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/sergio/Documents/UCR/2018 - I/Paradigmas/tareaProgramada2-Paradigmas/Programada 2/cmake-build-debug
